@@ -569,19 +569,85 @@
 </section>
 
 <!-- 추가 섹션은 여기에 구현할 수 있습니다 -->
-<section id="outlook" class="section" style="background-color: #f9fafb;">
-    <div class="container">
-        <h2 class="section-title">Market Outlook</h2>
-        <p class="section-content">Bitcoin market analysis and future predictions from industry experts. Stay informed about the latest trends and factors affecting Bitcoin's price.</p>
-        <!-- 여기에 차트와 전문가 분석 내용 추가 -->
-    </div>
-</section>
+<%--<section id="outlook" class="section" style="background-color: #f9fafb;">--%>
+<%--    <div class="container">--%>
+<%--        <h2 class="section-title">Market Outlook</h2>--%>
+<%--        <p class="section-content">Bitcoin market analysis and future predictions from industry experts. Stay informed about the latest trends and factors affecting Bitcoin's price.</p>--%>
+<%--        <!-- 여기에 차트와 전문가 분석 내용 추가 -->--%>
+<%--    </div>--%>
+<%--</section>--%>
 
 <section id="price" class="section" style="background-color: white;">
     <div class="container">
         <h2 class="section-title">Live Bitcoin Price</h2>
         <p class="section-content">Real-time Bitcoin price data, trading volume, and market comparisons.</p>
         <!-- 여기에 실시간 가격 데이터와 차트 추가 -->
+        <div class="chart-container" style="width: 700px; margin: auto;">
+            <canvas id="priceChart"></canvas>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            Promise.all([
+                fetch("https://api.coingecko.com/api/v3/coins/dogecoin/market_chart?vs_currency=usd&days=7").then(response => response.json()),
+                fetch("https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7").then(response => response.json())
+            ])
+                .then(([dogeData, btcData]) => {
+                    const ctx = document.getElementById('priceChart').getContext('2d');
+
+                    // 날짜 레이블은 도지코인 데이터에서 가져옵니다
+                    const labels = dogeData.prices.map(item => new Date(item[0]).toLocaleDateString());
+
+                    // 비트코인 가격은 굉장히 높기 때문에, 데이터 스케일 조정을 위해 별도의 Y축을 사용합니다
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [
+                                {
+                                    label: "도지코인 가격 (USD)",
+                                    data: dogeData.prices.map(item => item[1]),
+                                    borderColor: "blue",
+                                    fill: false,
+                                    yAxisID: 'y-doge'
+                                },
+                                {
+                                    label: "비트코인 가격 (USD)",
+                                    data: btcData.prices.map(item => item[1]),
+                                    borderColor: "orange",
+                                    fill: false,
+                                    yAxisID: 'y-btc'
+                                }
+                            ]
+                        },
+                        options: {
+                            scales: {
+                                'y-doge': {
+                                    type: 'linear',
+                                    display: true,
+                                    position: 'left',
+                                    title: {
+                                        display: true,
+                                        text: '도지코인 가격 (USD)'
+                                    }
+                                },
+                                'y-btc': {
+                                    type: 'linear',
+                                    display: true,
+                                    position: 'right',
+                                    title: {
+                                        display: true,
+                                        text: '비트코인 가격 (USD)'
+                                    },
+                                    grid: {
+                                        drawOnChartArea: false // 그리드 라인 중복 방지
+                                    }
+                                }
+                            }
+                        }
+                    });
+                });
+        </script>
     </div>
 </section>
 
