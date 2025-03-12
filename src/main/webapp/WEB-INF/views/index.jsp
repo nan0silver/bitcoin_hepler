@@ -243,7 +243,8 @@
 
         /* 메인 콘텐츠 영역 */
         .section {
-            padding: 4rem 0;
+            padding-top: 3rem;
+            padding-bottom: 1rem;
         }
 
         .section-title {
@@ -607,7 +608,7 @@
                                 {
                                     label: "도지코인 가격 (USD)",
                                     data: dogeData.prices.map(item => item[1]),
-                                    borderColor: "blue",
+                                    borderColor: "red",
                                     fill: false,
                                     yAxisID: 'y-doge'
                                 },

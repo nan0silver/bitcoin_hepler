@@ -3,6 +3,7 @@ package org.example.bitcoin_helper.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.bitcoin_helper.model.dto.BaseLLMResponse;
+import org.example.bitcoin_helper.model.dto.ImageLLMResponse;
 import org.example.bitcoin_helper.model.dto.ModelType;
 import org.example.bitcoin_helper.model.dto.TogetherAPIParam;
 import org.example.bitcoin_helper.model.repository.TogetherRepository;
@@ -33,6 +34,11 @@ public class TogetherService {
     }
 
     public String useImage(String prompt) throws JsonProcessingException {
-        return repository.callAPI(new TogetherAPIParam(prompt, ModelType.IMAGE));
+        String promptPreProcessing = "I need image that explain {%s}. please use disney style. cute. not realistic. No Text".formatted(prompt);
+        String responseText = repository.callAPI(new TogetherAPIParam(
+                promptPreProcessing,
+                ModelType.IMAGE
+        ));
+        return objectMapper.readValue(responseText, ImageLLMResponse.class).data().get(0).url();
     }
 }

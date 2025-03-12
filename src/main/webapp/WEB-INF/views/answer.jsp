@@ -285,7 +285,7 @@
                 </svg>
                 <h1 style="font-size: 1.5rem; font-weight: 700;">Bitcoin Insights</h1>
             </div>
-            <a href="index.jsp" class="back-btn">
+            <a href="/" class="back-btn">
                 <span class="material-symbols-outlined">arrow_back</span>
                 <span>돌아가기</span>
             </a>
@@ -313,6 +313,9 @@
         </div>
         <div class="answer-content">
             <%= session.getAttribute("reasoning")%>
+        </div>
+        <div>
+            <img alt="<%= session.getAttribute("answer")%>" src="<%= session.getAttribute("image")%>">
         </div>
 
         <div class="answer-meta">
