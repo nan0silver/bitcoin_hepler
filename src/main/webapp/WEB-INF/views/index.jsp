@@ -535,31 +535,6 @@
     </div>
 </section>
 
-<!-- 추가 섹션은 여기에 구현할 수 있습니다 -->
-<section id="outlook" class="section" style="background-color: #f9fafb;">
-    <div class="container">
-        <h2 class="section-title">Market Outlook</h2>
-        <p class="section-content">Bitcoin market analysis and future predictions from industry experts. Stay informed about the latest trends and factors affecting Bitcoin's price.</p>
-        <!-- 여기에 차트와 전문가 분석 내용 추가 -->
-    </div>
-</section>
-
-<section id="price" class="section" style="background-color: white;">
-    <div class="container">
-        <h2 class="section-title">Live Bitcoin Price</h2>
-        <p class="section-content">Real-time Bitcoin price data, trading volume, and market comparisons.</p>
-        <!-- 여기에 실시간 가격 데이터와 차트 추가 -->
-    </div>
-</section>
-
-<section id="resources" class="section" style="background-color: #f9fafb;">
-    <div class="container">
-        <h2 class="section-title">Resources</h2>
-        <p class="section-content">Educational resources, glossary of cryptocurrency terms, investment guides, and community links.</p>
-        <!-- 여기에 리소스 링크와 카드 추가 -->
-    </div>
-</section>
-
 <section id="questions" class="section" style="background-color: white;">
     <div class="container">
         <h2 class="section-title">비트코인 질문하기</h2>
@@ -592,6 +567,33 @@
         </div>
     </div>
 </section>
+
+<!-- 추가 섹션은 여기에 구현할 수 있습니다 -->
+<section id="outlook" class="section" style="background-color: #f9fafb;">
+    <div class="container">
+        <h2 class="section-title">Market Outlook</h2>
+        <p class="section-content">Bitcoin market analysis and future predictions from industry experts. Stay informed about the latest trends and factors affecting Bitcoin's price.</p>
+        <!-- 여기에 차트와 전문가 분석 내용 추가 -->
+    </div>
+</section>
+
+<section id="price" class="section" style="background-color: white;">
+    <div class="container">
+        <h2 class="section-title">Live Bitcoin Price</h2>
+        <p class="section-content">Real-time Bitcoin price data, trading volume, and market comparisons.</p>
+        <!-- 여기에 실시간 가격 데이터와 차트 추가 -->
+    </div>
+</section>
+
+<section id="resources" class="section" style="background-color: #f9fafb;">
+    <div class="container">
+        <h2 class="section-title">Resources</h2>
+        <p class="section-content">Educational resources, glossary of cryptocurrency terms, investment guides, and community links.</p>
+        <!-- 여기에 리소스 링크와 카드 추가 -->
+    </div>
+</section>
+
+
 
 <footer style="background-color: #1f2937; color: white; padding: 2rem 0;">
     <div class="container">
