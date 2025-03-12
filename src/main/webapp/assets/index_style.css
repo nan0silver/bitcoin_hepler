@@ -232,7 +232,8 @@ header {
 
 /* 메인 콘텐츠 영역 */
 .section {
-    padding: 4rem 0;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
 }
 
 .section-title {
