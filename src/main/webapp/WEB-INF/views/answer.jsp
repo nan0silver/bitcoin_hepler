@@ -232,6 +232,47 @@
             position: absolute;
             left: -1.2rem;
         }
+        /* 토글 버튼 스타일 */
+        .toggle-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #f3f4f6;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #4b5563;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 1rem 0;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .toggle-btn:hover {
+            background-color: #e5e7eb;
+        }
+
+        .toggle-btn.active {
+            background-color: #f97316;
+            color: white;
+        }
+
+        .thinking-section {
+            margin: 1.5rem 0;
+            border-top: 1px dashed #e5e7eb;
+            padding-top: 1.5rem;
+        }
+
+        .thinking-content {
+            background-color: #f9fafb;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            padding: 1.5rem !important;
+            border-left: 3px solid #f97316;
+        }
     </style>
 </head>
 <body>
@@ -259,8 +300,16 @@
         <div class="answer-content">
             <%= session.getAttribute("answer")%>
         </div>
-        <div class="answer-content">
-            <%= session.getAttribute("thinking")%>
+        <!-- thinking 섹션 - 기본적으로 숨김 처리 -->
+        <div class="thinking-section">
+            <button id="thinking-toggle" class="toggle-btn">
+                <span class="material-symbols-outlined">psychology</span>
+                <span class="toggle-text">AI의 사고 과정 보기</span>
+            </button>
+
+            <div id="thinking-content" class="answer-content thinking-content" style="display: none;">
+                <%= session.getAttribute("thinking")%>
+            </div>
         </div>
         <div class="answer-content">
             <%= session.getAttribute("reasoning")%>
@@ -330,6 +379,27 @@
             const question = this.querySelector('span:last-child').textContent;
             window.location.href = 'index.jsp?question=' + encodeURIComponent(question);
         });
+    });
+
+    // 사고 과정 토글 기능
+    document.addEventListener('DOMContentLoaded', function() {
+        const thinkingToggle = document.getElementById('thinking-toggle');
+        const thinkingContent = document.getElementById('thinking-content');
+
+        if (thinkingToggle && thinkingContent) {
+            thinkingToggle.addEventListener('click', function() {
+                // 내용 표시 여부 토글
+                if (thinkingContent.style.display === 'none') {
+                    thinkingContent.style.display = 'block';
+                    thinkingToggle.classList.add('active');
+                    thinkingToggle.querySelector('.toggle-text').textContent = 'AI의 사고 과정 숨기기';
+                } else {
+                    thinkingContent.style.display = 'none';
+                    thinkingToggle.classList.remove('active');
+                    thinkingToggle.querySelector('.toggle-text').textContent = 'AI의 사고 과정 보기';
+                }
+            });
+        }
     });
 </script>
 </body>

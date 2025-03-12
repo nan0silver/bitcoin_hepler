@@ -402,7 +402,7 @@
             </div>
             <div class="nav-links space-x-4">
                 <a href="#introduction">Introduction</a>
-                <a href="#outlook">Market Outlook</a>
+                <a href="#questions">Market Outlook</a>
                 <a href="#price">Live Price</a>
                 <a href="#resources">Resources</a>
             </div>
