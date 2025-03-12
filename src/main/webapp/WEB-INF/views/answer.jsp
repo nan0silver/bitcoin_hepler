@@ -50,7 +50,7 @@
         <div class="answer-content">
             <%= session.getAttribute("reasoning")%>
         </div>
-        <div>
+        <div class="answer-image-container">
             <img alt="<%= session.getAttribute("answer")%>" src="<%= session.getAttribute("image")%>">
         </div>
 
@@ -99,6 +99,16 @@
         <p>질문을 다시 시도해주세요.</p>
     </div>
     <% } %>
+
+    <!-- 플로팅 액션 버튼 추가 -->
+    <div class="floating-actions">
+        <button class="floating-btn primary" id="ask-new-question" title="새 질문하기">
+            <span class="material-symbols-outlined">add</span>
+        </button>
+        <button class="floating-btn" id="scroll-top" title="맨 위로 이동">
+            <span class="material-symbols-outlined">arrow_upward</span>
+        </button>
+    </div>
 </div>
 
 <script>
