@@ -103,6 +103,7 @@
             font-size: 1.125rem;
             line-height: 1.7;
             color: #4b5563;
+            padding: 10px;
         }
 
         .answer-content p {
@@ -257,6 +258,12 @@
 
         <div class="answer-content">
             <%= session.getAttribute("answer")%>
+        </div>
+        <div class="answer-content">
+            <%= session.getAttribute("thinking")%>
+        </div>
+        <div class="answer-content">
+            <%= session.getAttribute("reasoning")%>
         </div>
 
         <div class="answer-meta">
