@@ -10,39 +10,39 @@ import java.net.http.HttpResponse;
 import java.util.logging.Logger;
 
 public interface APIClient {
+
     private Logger getLogger() {
         return Logger.getLogger(this.getClass().getName());
     }
 
-    private void info(String message) {
+    private void info(String message)  {
         getLogger().info(message);
     }
 
-    private void error(String message) {
+    private void error(String message)  {
         getLogger().severe(message);
     }
 
-    default public String callAPI(APIClientParam param) {
+    default String callAPI(APIClientParam param)  {
         try {
             HttpResponse<String> response = httpClient.send(buildRequest(param), HttpResponse.BodyHandlers.ofString());
             info("%d".formatted(response.statusCode()));
             return response.body();
-        } catch (Exception e){
+        } catch (Exception e) {
             error(e.getMessage());
             throw new RuntimeException(e);
         }
-
     }
 
-    Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
     HttpClient httpClient = HttpClient.newHttpClient();
 
+    Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
+
     private HttpRequest buildRequest(APIClientParam param) {
+
         return HttpRequest.newBuilder()
                 .uri(URI.create(param.url()))
                 .method(param.method(), HttpRequest.BodyPublishers.ofString(param.body()))
-                .header("Content-Type", "application/json")
-                .header("Accept", "application/json")
                 .headers(param.headers())
                 .build();
     }
