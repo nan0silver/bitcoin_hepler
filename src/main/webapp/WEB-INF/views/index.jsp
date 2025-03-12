@@ -560,6 +560,39 @@
     </div>
 </section>
 
+<section id="questions" class="section" style="background-color: white;">
+    <div class="container">
+        <h2 class="section-title">비트코인 질문하기</h2>
+        <p class="section-content">비트코인이나 암호화폐에 관한 궁금한 점이 있으신가요? AI 전문가에게 질문해보세요.</p>
+
+        <!-- Question Form -->
+        <div class="card" style="max-width: 700px; margin: 0 auto; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+            <h3 style="margin-bottom: 1.5rem; text-align: center; font-size: 1.25rem; font-weight: 600;">궁금한 점을 물어보세요</h3>
+            <% if (session.getAttribute("message") != null) { %>
+            <p><%= session.getAttribute("message") %></p>
+            <% } %>
+            <form id="questionForm" method="post">
+                <div style="margin-bottom: 1rem;">
+                    <input type="text" name="question" style="width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #e5e7eb; font-size: 1rem;" id="questionInput" placeholder="예: 비트코인 채굴이란 무엇인가요?" required>
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" style="background-image: linear-gradient(to right, #f97316, #eab308); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 500; cursor: pointer; transition: all 0.3s;">질문하기</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 이전 질문 예시 -->
+        <div style="max-width: 700px; margin: 2rem auto 0; padding: 1rem;">
+            <h4 style="margin-bottom: 1rem; font-size: 1rem; font-weight: 600; color: #4b5563;">자주 묻는 질문:</h4>
+            <ul style="list-style: none;">
+                <li style="margin-bottom: 0.5rem; padding: 0.5rem; background-color: #f9fafb; border-radius: 0.5rem; cursor: pointer; transition: background-color 0.2s;">비트코인과 이더리움의 차이점은 무엇인가요?</li>
+                <li style="margin-bottom: 0.5rem; padding: 0.5rem; background-color: #f9fafb; border-radius: 0.5rem; cursor: pointer; transition: background-color 0.2s;">비트코인 지갑은 어떻게 안전하게 보관하나요?</li>
+                <li style="margin-bottom: 0.5rem; padding: 0.5rem; background-color: #f9fafb; border-radius: 0.5rem; cursor: pointer; transition: background-color 0.2s;">비트코인 반감기란 무엇이며 가격에 어떤 영향을 미치나요?</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
 <footer style="background-color: #1f2937; color: white; padding: 2rem 0;">
     <div class="container">
         <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
